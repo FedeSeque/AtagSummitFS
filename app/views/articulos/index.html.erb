@@ -1,0 +1,14 @@
+<h1>Mis articulos</h1>
+
+<%= link_to 'Crear Articulo', new_articulo_path %>
+
+<% @articulos.each do |articulo| %>
+  <div class="formatted_articulo">
+    <p id="fecha"><%= articulo.created_at.strftime("%A,%h,%d,%Y,%H:%M hs") %></p>
+    <p id="titulo"><%= articulo.titulo %></p>
+    <p><%= articulo.cuerpo %></p><br />
+    <p id="acciones"><%= link_to 'Ver', articulo %>
+    <%= link_to 'Editar', edit_articulo_path(articulo) %>
+    <%= link_to 'Eliminar', articulo, confirm: 'Esta seguro?', method: :delete %>
+  </div>
+<% end %>

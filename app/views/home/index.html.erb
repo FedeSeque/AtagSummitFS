@@ -1,0 +1,14 @@
+<h1>Noticias!</h1>
+<p>Esto es lo que esta pasando cheee!</p>
+
+<% @articulos.each do |articulo| %>
+  <div class="formatted_articulo">
+    <p id="fecha"><%= articulo.created_at.strftime("%A,%h,%d,%Y,%H:%M hs") %></p>
+    <p id="titulo"><%= articulo.titulo %></p>
+    <p id="autor"><%= get_formatted_autor articulo %></p>
+    <p><%= articulo.cuerpo[0..140] %></p><br />
+    <p id="leermas"><%= link_to "leer mas...", :controller => "home", :action => "show", :id => articulo.id %></p>
+  </div>
+<% end %>
+
+

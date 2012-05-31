@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>AtagSummitFS</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <div>
+    <% flash.each do |name,msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+  </div>
+
+  <div class= "autor_nav">
+    <%= link_to "Inicio", root_path %>
+    <% if loggedin_autor? %>
+      <%= "Hola #{@loggedin_autor.nombre}#{@loggedin_autor.apellido}!" %>
+      <%= link_to "(Salir)", salir_path %> |    
+      <%= link_to "(Mis articulos)", articulos_path %>
+    <% else %>
+      <%= link_to "Ingreso", login_path %> si ya tienes una cuenta, sino
+      <%= link_to "Registrate", registro_path %>
+    <% end %>
+  </div>
+
+  <%= yield %>
+</body>
+
+</html>

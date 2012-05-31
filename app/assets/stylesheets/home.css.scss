@@ -1,0 +1,39 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.formatted_articulo {
+  background-color: whitesmoke;
+  border-bottom-style: solid;
+  border-color: gray;
+
+  #fecha{
+    color: gray;
+    font-style: italic;
+    font-size: 85%;
+    text-align: right;
+  }
+
+  #titulo{
+    font-size: 170%;
+    font-weight: bold;
+  } 
+
+  #autor, #leermas{
+    color: gray;
+    font-style: italic;
+    font-size: 85%;
+    text-align: left;
+  }
+
+  #acciones{
+    font-size: 85%;
+    text-align: right;
+  }
+
+}
+
+.autor_nav {
+  font-size: 90%;
+  text-align: right;
+}

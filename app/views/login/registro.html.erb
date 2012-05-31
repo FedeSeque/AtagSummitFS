@@ -1,0 +1,20 @@
+<h1>Registrarse</h1>
+<p>Ingresa al fabulantástico mundo de la publicación online!!!</p>
+
+<%= form_for @autor, :url => {:action => "registrar" } do |f| %>
+  <p>
+    <%= f.label :usuario %><br />
+    <%= f.text_field :usuario %>
+  </p>
+  <p>
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </p>
+  <p>
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido %>
+  </p>
+  <p>
+    <%= f.submit "Registrarse!" %>
+  </p>
+<% end %>

@@ -1,0 +1,12 @@
+<h1>Ingreso</h1>
+<p>Ingrese su usuario</p>
+
+<%= form_tag "/ingreso" do %>
+  <p>
+    <b>Usuario<b/><br />
+    <%= text_field_tag :usuario %>
+  </p>
+  <p>
+    <%= submit_tag "Ingresar!" %>
+  </p>
+<% end %>
