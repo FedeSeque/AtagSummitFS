@@ -10,6 +10,13 @@
   <%= @articulo.cuerpo %>
 </p>
 
+<p>
+  <b>Categorias:</b>
+  <% @articulo.categories.each do |c| %>
+    '<%= c.nombre %>'
+  <% end %>
+</p>
+
 
 <%= link_to 'Editar', edit_articulo_path(@articulo) %> |
 <%= link_to 'Volver', articulos_path %>

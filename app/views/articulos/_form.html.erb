@@ -11,6 +11,15 @@
     </div>
   <% end %>
 
+  <p> Categorias
+    <% for category in Category.find(:all) %>
+    <div>
+      <%= check_box_tag "articulo[category_ids][]", category.id, @articulo.categories.include?(category) %>
+      <%= category.nombre %>
+    </div>
+    <% end %>
+  </p>
+
   <div class="field">
     <%= f.label :titulo %><br />
     <%= f.text_field :titulo %>
@@ -19,6 +28,7 @@
     <%= f.label :cuerpo %><br />
     <%= f.text_area :cuerpo %>
   </div>
+
   <div class="actions">
     <%= f.submit "Aceptar" %>
   </div>
