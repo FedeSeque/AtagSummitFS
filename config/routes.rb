@@ -1,5 +1,7 @@
 AtagSummitFS::Application.routes.draw do
 
+  resources :categories
+
   get "home/index"
 
   get "login" => "login#login"

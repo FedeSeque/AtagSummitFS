@@ -6,5 +6,12 @@
   <p id="titulo"><%= @articulo.titulo %></p>
   <p id="autor"><%= get_formatted_autor @articulo %></p>
   <p><%= @articulo.cuerpo %></p>
+  <p id="categorias">
+  <% articulo.categories.each do |c| %>
+    <%= c.nombre %> 
+  <% end %>		
+  </p>
 </div>
+
+
 
