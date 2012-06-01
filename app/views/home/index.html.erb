@@ -7,6 +7,8 @@
     <p id="titulo"><%= articulo.titulo %></p>
     <p id="autor"><%= get_formatted_autor articulo %></p>
     <p><%= articulo.cuerpo[0..140] %></p><br />
+    <p id="hits"><%= "#{articulo.hits.count} visitas a este articulo" if (articulo.hits.count > 1)%></p>
+    <p id="hits"><%= "#{articulo.hits.count} visita a este articulo" if (articulo.hits.count == 1)%></p>
     <p id="leermas"><%= link_to "leer mas...", :controller => "home", :action => "show", :id => articulo.id %></p>
   </div>
 <% end %>
