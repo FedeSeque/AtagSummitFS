@@ -95,6 +95,8 @@ class ArticulosController < ApplicationController
 
     if @comentario.save
       redirect_to :controller => "home", :action => "show", :id => @comentario.articulo_id
+    else
+      redirect_to :back, :notice => "No se pudo agregar el comentario, el nombre y cuerpo deben ser completados" 
     end
   end
 
