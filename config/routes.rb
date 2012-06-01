@@ -16,6 +16,8 @@ AtagSummitFS::Application.routes.draw do
 
   get "show" => "home#show"
 
+  post "agregar_comentario" => "articulos#agregar_comentario"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
