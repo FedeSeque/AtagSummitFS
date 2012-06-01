@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
   <div>
     <% flash.each do |name,msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
@@ -16,9 +17,9 @@
   </div>
 
   <div class= "autor_nav">
-    <%= link_to "Inicio", root_path %>
+    <%= link_to "Inicio", root_path %> | 
     <% if loggedin_autor? %>
-      <%= "Hola #{@loggedin_autor.nombre}#{@loggedin_autor.apellido}!" %>
+      <%= "Hola #{@loggedin_autor.nombre}#{@loggedin_autor.apellido}" %>
       <%= link_to "(Salir)", salir_path %> |    
       <%= link_to "(Mis articulos)", articulos_path %>
     <% else %>

@@ -3,7 +3,7 @@
 
 <% @articulos.each do |articulo| %>
   <div class="formatted_articulo">
-    <p id="fecha"><%= articulo.created_at.strftime("%A,%h,%d,%Y,%H:%M hs") %></p>
+    <p id="fecha"><%= articulo.created_at.strftime("%A %d %h of %Y - %H:%M hs") %></p>
     <p id="titulo"><%= articulo.titulo %></p>
     <p id="autor"><%= get_formatted_autor articulo %></p>
     <p><%= articulo.cuerpo[0..140] %></p><br />
