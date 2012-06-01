@@ -29,6 +29,17 @@
     <%= f.text_area :cuerpo %>
   </div>
 
+  <p>
+  <%= hidden_field_tag :comment_ids_before_edition, @comment_ids_before_edition %>
+  <%= "Comentarios" if @articulo.comments.count > 0 %>
+    <% for comment in @articulo.comments %>
+      <div>
+      <%= "#{comment.comentador}: '#{comment.cuerpo}'" %>
+      - [<%= check_box_tag "articulo[comment_ids][]", comment.id, false %> Remove ]
+      </div>
+    <% end %>
+  </p>
+
   <div class="actions">
     <%= f.submit "Aceptar" %>
   </div>

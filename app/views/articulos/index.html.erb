@@ -7,8 +7,10 @@
     <p id="fecha"><%= articulo.created_at.strftime("%A,%h,%d,%Y,%H:%M hs") %></p>
     <p id="titulo"><%= articulo.titulo %></p>
     <p><%= articulo.cuerpo %></p><br />
-    <p id="acciones"><%= link_to 'Ver', articulo %>
-    <%= link_to 'Editar', edit_articulo_path(articulo) %>
+    <p id="comentarios"><%= "#{articulo.comments.count} comentarios de este articulo" if (articulo.comments.count > 0) %></p>
+    <p id="comentarios"><%= "No hay comentarios de este articulo" if (articulo.comments.count == 0) %></p>
+    <p id="acciones"><%= link_to 'Ver', articulo %> |
+    <%= link_to 'Editar', edit_articulo_path(articulo) %> |
     <%= link_to 'Eliminar', articulo, confirm: 'Esta seguro?', method: :delete %>
   </div>
 <% end %>

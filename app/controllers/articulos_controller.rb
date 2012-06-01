@@ -35,6 +35,7 @@ class ArticulosController < ApplicationController
   # GET /articulos/1/edit
   def edit
     @articulo = Articulo.find(params[:id])
+    @comment_ids_before_edition = @articulo.comment_ids
   end
 
   # POST /articulos
@@ -64,6 +65,12 @@ class ArticulosController < ApplicationController
   # PUT /articulos/1.json
   def update
     @articulo = Articulo.find(params[:id])
+
+    #apologies for the hack, couldnt find a better way to do it
+    comment_ids_after_edition = params[:comment_ids_before_edition].split.keep_if do |comment_id| (not params[:articulo][:comment_ids].include? comment_id)
+    end
+    params[:articulo][:comment_ids] = comment_ids_after_edition
+
 
     respond_to do |format|
       if @articulo.update_attributes(params[:articulo])

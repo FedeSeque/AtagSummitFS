@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Categorias:</b>
+  <% @articulo.categories.each do |c| %>
+    '<%= c.nombre %>'
+  <% end %>
+</p>
+
+<p>
   <b>Titulo:</b>
   <%= @articulo.titulo %>
 </p>
@@ -11,12 +18,11 @@
 </p>
 
 <p>
-  <b>Categorias:</b>
-  <% @articulo.categories.each do |c| %>
-    '<%= c.nombre %>'
-  <% end %>
+  <b><%= "Comentarios:" if @articulo.comments.count > 0 %></b><br/>
+    <% @articulo.comments.each do |c| %>
+      <%= "[#{c.comentador}] #{c.cuerpo}" %><br/>
+    <% end %>
 </p>
-
 
 <%= link_to 'Editar', edit_articulo_path(@articulo) %> |
 <%= link_to 'Volver', articulos_path %>
