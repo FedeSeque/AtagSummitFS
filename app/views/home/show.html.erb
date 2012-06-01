@@ -7,11 +7,33 @@
   <p id="autor"><%= get_formatted_autor @articulo %></p>
   <p><%= @articulo.cuerpo %></p>
   <p id="categorias">
-  <% articulo.categories.each do |c| %>
+  <% @articulo.categories.each do |c| %>
     <%= c.nombre %> 
   <% end %>		
   </p>
+
+  <br />
+  <p><b> <%= "Comentarios:" if @articulo.comments.count > 0 %> </b></p>
+    <% @articulo.comments.each do |comment| %>
+      <p id="comentador"><%= "#{comment.comentador} dice:" %></p>
+      <p id="comentario"><%= comment.cuerpo %></p>
+      <br/>
+    <% end %>
+
+  <p><b>Comentar sobre este articulo</b></p>
+  <%= form_for @comentario, :url=>{:controller=>"articulos", :action=>"agregar_comentario"} do |f| %>
+    <%= hidden_field_tag :articulo_id, @articulo.id %>
+  <p>
+  <%=f.label "Nombre (puede comentar anonimamente)"%><br />
+  <%= f.text_field :comentador %>
+  </p>
+  <p>
+  <%= f.label :cuerpo %><br />
+  <%= f.text_area :cuerpo %>
+  </p>
+  <p>
+  <%= f.submit "Comentar!" %>
+  </p>
+  <% end %>
+
 </div>
-
-
-
