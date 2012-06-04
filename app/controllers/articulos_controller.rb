@@ -2,7 +2,7 @@ class ArticulosController < ApplicationController
   # GET /articulos
   # GET /articulos.json
   def index
-    @articulos = Articulo.where(:id_autor => session[:id_autor]).order("created_at DESC")
+    @articulos = Articulo.where(:autor_id => session[:autor_id]).order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,14 +43,14 @@ class ArticulosController < ApplicationController
   def create
     @articulo = Articulo.new(params[:articulo])
 
-    if session[:id_autor].nil?
+    if session[:autor_id].nil?
       redirect_to login_path
     else  
-      @articulo.id_autor= session[:id_autor]
+      @articulo.autor_id= session[:autor_id]
 
       respond_to do |format|
         if @articulo.save
-          format.html { redirect_to @articulo, notice: 'Articulo creado exitosamente.' }
+          format.html { redirect_to @articulo, notice: 'Articulo creado exitosamente' }
           format.json { render json: @articulo, status: :created, location: @articulo }
         else
           format.html { render action: "new" }
@@ -66,15 +66,16 @@ class ArticulosController < ApplicationController
   def update
     @articulo = Articulo.find(params[:id])
 
-    #apologies for the hack, couldnt find a better way to do it
-    comment_ids_after_edition = params[:comment_ids_before_edition].split.keep_if do |comment_id| (not params[:articulo][:comment_ids].include? comment_id)
-    end
-    params[:articulo][:comment_ids] = comment_ids_after_edition
-
-
+		if (not params[:articulo][:comment_ids].nil?)
+	    #apologies for the hack, couldnt find a better way to do it
+	    comment_ids_after_edition = params[:comment_ids_before_edition].split.keep_if do |comment_id| (not params[:articulo][:comment_ids].include? comment_id)
+    	end
+	    params[:articulo][:comment_ids] = comment_ids_after_edition
+		end
+		
     respond_to do |format|
       if @articulo.update_attributes(params[:articulo])
-        format.html { redirect_to @articulo, notice: 'Articulo actualizado exitosamente.' }
+        format.html { redirect_to @articulo, notice: 'Articulo actualizado exitosamente' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

@@ -1,8 +1,13 @@
 module HomeHelper
 
-  def get_formatted_autor articulo
-    @autor = Autor.find(articulo.id_autor) if articulo.id_autor
-    "por #{@autor.nombre} #{@autor.apellido}"
+  def get_autor articulo
+    @autor = Autor.find(articulo.autor_id) if articulo.autor_id
+    "#{@autor.nombre} #{@autor.apellido}"
+  end
+  
+  def get_autor_id articulo
+    @autor = Autor.find(articulo.autor_id) if articulo.autor_id
+    @autor.id
   end
 
 end

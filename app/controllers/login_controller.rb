@@ -9,7 +9,7 @@ class LoginController < ApplicationController
     if @autor.nil?
       redirect_to login_path, :notice => "Usuario no encontrado!"
     else
-      session[:id_autor] =@autor.id
+      session[:autor_id] =@autor.id
       redirect_to root_path
     end
   end
@@ -24,7 +24,7 @@ class LoginController < ApplicationController
   end
 
   def salir
-    session[:id_autor]=nil
+    session[:autor_id]=nil
     redirect_to root_path
   end
 

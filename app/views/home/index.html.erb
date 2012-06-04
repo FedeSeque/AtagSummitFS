@@ -5,7 +5,7 @@
   <div class="formatted_articulo">
     <p id="fecha"><%= articulo.created_at.strftime("%A %d %h of %Y - %H:%M hs") %></p>
     <p id="titulo"><%= articulo.titulo %></p>
-    <p id="autor"><%= get_formatted_autor articulo %></p>
+    <p id="autor">por <%= link_to (get_autor articulo), :controller => "autor", :action => "show", :id => (get_autor_id articulo) %></p>
     <p><%= articulo.cuerpo[0..140] %></p><br />
     <p id="hits"><%= "#{articulo.hits.count} visitas a este articulo" if (articulo.hits.count > 1)%></p>
     <p id="hits"><%= "#{articulo.hits.count} visita a este articulo" if (articulo.hits.count == 1)%></p>

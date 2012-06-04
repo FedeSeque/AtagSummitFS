@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Usuario:</b>
+		<%= @autor.usuario %>
+</p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @autor.nombre %>
+</p>
+
+<p>
+  <b>Apellido:</b>
+  <%= @autor.apellido %>
+</p>
+
+<p>
+  <b>Cantidad de articulos:</b>
+  <%= @autor.articulos.count %> <br/>
+</p>
+
+<%= link_to 'Volver', root_path %>

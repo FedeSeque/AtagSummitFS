@@ -3,7 +3,7 @@ class CreateArticulos < ActiveRecord::Migration
     create_table :articulos do |t|
       t.string :titulo
       t.text :cuerpo
-      t.integer :id_autor
+      t.integer :autor_id
 
       t.timestamps
     end

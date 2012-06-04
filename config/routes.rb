@@ -15,8 +15,9 @@ AtagSummitFS::Application.routes.draw do
   root :to => "home#index"
 
   get "show" => "home#show"
-
   post "agregar_comentario" => "articulos#agregar_comentario"
+  
+  get "show_autor" => "autor#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

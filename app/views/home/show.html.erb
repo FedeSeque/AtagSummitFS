@@ -9,7 +9,7 @@
   </p>
   <p id="fecha"><%= @articulo.created_at.strftime("%A %d %h of %Y - %H:%M hs") %></p>
   <p id="titulo"><%= @articulo.titulo %></p>
-  <p id="autor"><%= get_formatted_autor @articulo %></p>
+  <p id="autor"><%= get_autor @articulo %></p>
   <p><%= @articulo.cuerpo %></p>
   <br />
   <p><b> <%= "Comentarios:" if @articulo.comments.count > 0 %> </b></p>
